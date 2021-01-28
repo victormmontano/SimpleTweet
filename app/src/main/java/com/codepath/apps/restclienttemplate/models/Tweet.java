@@ -13,13 +13,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class Tweet {
     public String body;
     public String createdAt;
     public User user;
     public String timeStamp;
+    public long id;
+
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();
 
@@ -27,6 +28,7 @@ public class Tweet {
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
         tweet.timeStamp = calculateTime(tweet.createdAt);
+        tweet.id = jsonObject.getLong("id");
         return tweet;
     }
 
@@ -40,7 +42,7 @@ public class Tweet {
             e.printStackTrace();
         }
 
-        Log.i("Time", date.toString());
+      //  Log.i("Time", date.toString());
 
         PrettyTime p  = new PrettyTime();
         String time= p.format(date);
