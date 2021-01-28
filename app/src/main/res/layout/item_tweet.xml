@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp">
@@ -28,6 +29,8 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="2dp"
         android:layout_toEndOf="@id/ivProfileImage"
+        android:autoLink="all"
+        android:linksClickable="true"
         tools:text="Hello world!" />
 
     <TextView
@@ -36,4 +39,51 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         tools:text="xm" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tvRetweet"
+        android:layout_marginTop="2dp"
+        android:background="?android:attr/listDivider" />
+
+    <ImageView
+        android:id="@+id/ivRetweet"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@id/tvBody"
+        android:layout_alignStart="@id/tvBody"
+        android:layout_marginTop="2dp"
+        app:srcCompat="@drawable/ic_vector_retweet_stroke" />
+
+    <TextView
+        android:id="@+id/tvRetweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/ivRetweet"
+        android:layout_marginStart="2dp"
+        android:layout_toEndOf="@id/ivRetweet"
+        android:textSize="10sp"
+        tools:text="x" />
+
+    <ImageView
+        android:id="@+id/ivLike"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@id/tvBody"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@id/ivRetweet"
+        app:srcCompat="@drawable/ic_vector_heart_stroke" />
+
+    <TextView
+        android:id="@+id/tvLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/ivLike"
+        android:layout_marginStart="2dp"
+        android:layout_toEndOf="@id/ivLike"
+        android:textSize="10sp"
+        tools:text="x" />
 </RelativeLayout>

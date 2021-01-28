@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    tools:context=".TweetDetailActivity">
+
+    <ImageView
+        android:id="@+id/ivDetailProfileImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvDetailScreenName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_toEndOf="@id/ivDetailProfileImage"
+        android:textSize="18sp"
+        tools:text="CodePath" />
+
+    <TextView
+        android:id="@+id/tvDetailBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivDetailProfileImage"
+        android:layout_marginTop="2dp"
+        android:textSize="18sp"
+        tools:text="Tweet!" />
+
+    <TextView
+        android:id="@+id/tvDetailTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDetailBody"
+        android:layout_marginTop="2dp"
+        tools:text="HH:mm" />
+
+    <TextView
+        android:id="@+id/tvDetailDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDetailBody"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@id/tvDetailTime"
+        tools:text="MM/DD/YYYY" />
+
+    <View
+        android:id="@+id/dividerTop"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tvDetailTime"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:id="@+id/tvDetailRetweetCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dividerTop"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2dp"
+        tools:text="x Retweets" />
+
+    <TextView
+        android:id="@+id/tvDetailLikeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dividerTop"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@id/tvDetailRetweetCount"
+        tools:text="x Likes" />
+
+</RelativeLayout>
