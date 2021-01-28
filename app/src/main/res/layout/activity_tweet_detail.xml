@@ -14,11 +14,23 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvDetailScreenName"
+        android:id="@+id/tvDetailName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_toEndOf="@id/ivDetailProfileImage"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="CodePath" />
+
+    <TextView
+        android:id="@+id/tvDetailScreenName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDetailName"
+        android:layout_marginStart="2dp"
+        android:layout_toEndOf="@id/ivDetailProfileImage"
+        android:textColorHint="@android:color/darker_gray"
         android:textSize="18sp"
         tools:text="CodePath" />
 
@@ -27,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ivDetailProfileImage"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="5dp"
         android:textSize="18sp"
         tools:text="Tweet!" />
 

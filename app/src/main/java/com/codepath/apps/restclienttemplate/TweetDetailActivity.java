@@ -3,6 +3,7 @@ package com.codepath.apps.restclienttemplate;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,13 +15,14 @@ import org.parceler.Parcels;
 
 public class TweetDetailActivity extends AppCompatActivity {
     private ImageView ivProfileImage;
+    private TextView tvName;
     private TextView tvScreenName;
     private TextView tvBody;
     private TextView tvTime;
     private TextView tvDate;
     private TextView tvRetweets;
     private TextView tvLikes;
-     Tweet tweet;
+    Tweet tweet;
 
 
     @Override
@@ -28,6 +30,7 @@ public class TweetDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tweet_detail);
         ivProfileImage = findViewById(R.id.ivDetailProfileImage);
+        tvName = findViewById(R.id.tvDetailName);
         tvScreenName = findViewById(R.id.tvDetailScreenName);
         tvBody = findViewById(R.id.tvDetailBody);
         tvTime = findViewById(R.id.tvDetailTime);
@@ -38,6 +41,7 @@ public class TweetDetailActivity extends AppCompatActivity {
         tweet = (Tweet) Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
 
         Glide.with(this).load(tweet.user.profileImageUrl).into(ivProfileImage);
+        tvName.setText(tweet.user.name);
         tvScreenName.setText(tweet.user.screenName);
         tvBody.setText(tweet.body);
         tvTime.setText(tweet.time);
