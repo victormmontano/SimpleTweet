@@ -1,20 +1,28 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Movie;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+
 import android.view.ViewGroup;
+import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import org.parceler.Parcels;
@@ -42,6 +50,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Tweet tweet = tweets.get(position);
         holder.bind(tweet);
+
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,21 +66,21 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         return tweets.size();
     }
 
-    public void clear(){
+    public void clear() {
         tweets.clear();
         notifyDataSetChanged();
     }
 
-    public void addAll(List<Tweet> list){
+    public void addAll(List<Tweet> list) {
         tweets.addAll(list);
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivProfileImage;
-        TextView tvBody;
-         TextView tvScreenName;
+         TextView tvBody;
+        TextView tvScreenName;
         TextView tvTimeStamp;
         TextView tvRetweet;
         TextView tvLike;
@@ -81,12 +90,12 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             tvBody = itemView.findViewById(R.id.tvBody);
-             tvScreenName = itemView.findViewById(R.id.tvScreenName);
+            tvScreenName = itemView.findViewById(R.id.tvScreenName);
             tvTimeStamp = itemView.findViewById(R.id.tvTimeStamp);
             tvRetweet = itemView.findViewById(R.id.tvRetweet);
             tvLike = itemView.findViewById(R.id.tvLike);
             relativeLayout = itemView.findViewById(R.id.layout);
-        }
+         }
 
         public void bind(Tweet tweet) {
             tvBody.setText(tweet.body);
@@ -95,8 +104,10 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvRetweet.setText(tweet.retweet);
             tvLike.setText(tweet.like);
             Glide.with(context).load(tweet.user.profileImageUrl).circleCrop().into(ivProfileImage);
-         }
 
 
+        }
     }
 }
+
+

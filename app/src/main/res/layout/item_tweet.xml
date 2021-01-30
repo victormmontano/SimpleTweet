@@ -61,13 +61,14 @@
         android:layout_below="@id/tvBody"
         android:layout_alignStart="@id/tvBody"
         android:layout_marginTop="2dp"
-        app:tint="#AAB8C2"
-        app:srcCompat="@drawable/ic_vector_retweet_stroke" />
+        app:srcCompat="@drawable/ic_vector_retweet_stroke"
+        app:tint="#AAB8C2" />
 
     <TextView
         android:id="@+id/tvRetweet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tvBody"
         android:layout_alignBottom="@id/ivRetweet"
         android:layout_marginStart="2dp"
         android:layout_toEndOf="@id/ivRetweet"
@@ -82,16 +83,19 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="2dp"
         android:layout_toEndOf="@id/ivRetweet"
-        app:tint="#AAB8C2"
-        app:srcCompat="@drawable/ic_vector_heart_stroke" />
+        app:srcCompat="@drawable/ic_vector_heart_stroke"
+        app:tint="#AAB8C2" />
+
 
     <TextView
         android:id="@+id/tvLike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tvBody"
         android:layout_alignBottom="@id/ivLike"
         android:layout_marginStart="2dp"
         android:layout_toEndOf="@id/ivLike"
         android:textSize="10sp"
         tools:text="x" />
+
 </RelativeLayout>

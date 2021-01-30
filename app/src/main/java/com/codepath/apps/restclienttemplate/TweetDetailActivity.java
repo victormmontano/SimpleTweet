@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import org.parceler.Parcels;
@@ -46,6 +50,7 @@ public class TweetDetailActivity extends AppCompatActivity {
         tvBody.setText(tweet.body);
         tvTime.setText(tweet.time);
         tvDate.setText(tweet.day);
+
         if(tweet.retweets.isEmpty()) {
             tvRetweets.setVisibility(View.GONE);
         }

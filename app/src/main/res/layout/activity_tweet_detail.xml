@@ -40,6 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ivDetailProfileImage"
         android:layout_marginTop="5dp"
+        android:autoLink="all"
+        android:linksClickable="true"
         android:textSize="18sp"
         tools:text="Tweet!" />
 

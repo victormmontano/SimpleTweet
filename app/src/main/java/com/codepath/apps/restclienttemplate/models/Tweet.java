@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Parcel
@@ -32,11 +33,16 @@ public class Tweet {
     public String like;
     public String retweets;
     public String likes;
+    public List<String> mediaUrls;
 
     public Tweet(){ }
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();
+       /* for (Iterator<String> it = jsonObject.keys(); it.hasNext(); ) {
+            String s = it.next();
+            Log.i("keys", s);
+        }*/
 
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
@@ -52,7 +58,29 @@ public class Tweet {
         tweet.likes = getLikes(tweet.likeCount);
         tweet.retweet = getRetweet(tweet.retweetCount);
         tweet.like = getLike(tweet.likeCount);
+        tweet.mediaUrls = getMedia(jsonObject.getJSONObject("entities"));
         return tweet;
+    }
+
+    private static List<String> getMedia(JSONObject entities) {
+        List<String> mediaUrls = new ArrayList<>();
+        if(entities.has("media")){
+            try {
+                JSONArray mediaJsonArray = entities.getJSONArray("media");
+                for(int i = 0; i < mediaJsonArray.length(); i++){
+                    JSONObject urls = mediaJsonArray.getJSONObject(i);
+                    if(urls.has("media_url_https"))
+                        mediaUrls.add(urls.getString("media_url_https"));
+                }
+
+             /*   if(entities.getJSONArray("media").getJSONObject(0).has("media_url_https")){
+                   // return entities.getJSONArray("media").getJSONObject(0).getString("media_url_https");
+                }*/
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return mediaUrls;
     }
 
     private static String getLike(int likeCount) {
