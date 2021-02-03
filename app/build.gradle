@@ -58,5 +58,4 @@ dependencies {
     implementation 'org.ocpsoft.prettytime:prettytime:5.0.0.Final'
     implementation 'org.parceler:parceler-api:1.1.12'
     annotationProcessor 'org.parceler:parceler:1.1.12'
-
 }

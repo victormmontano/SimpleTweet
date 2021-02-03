@@ -2,6 +2,12 @@ package com.codepath.apps.restclienttemplate.models;
 
 import android.util.Log;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,22 +24,58 @@ import java.util.Iterator;
 import java.util.List;
 
 @Parcel
+@Entity(foreignKeys = @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "userId"))
 public class Tweet {
-    public String body;
-    public String createdAt;
-    public User user;
-    public String timeStamp;
-    public String time;
-    public String day;
-    Date date;
+
+    @ColumnInfo
+    @PrimaryKey
     public long id;
+
+    @ColumnInfo
+    public String body;
+
+    @ColumnInfo
+    public String createdAt;
+
+    @ColumnInfo
+    public String timeStamp;
+
+    @ColumnInfo
+    public String time;
+
+    @ColumnInfo
+    public String day;
+
+    @Ignore
+    Date date;
+
+    @ColumnInfo
     public int retweetCount;
+
+    @ColumnInfo
     public int likeCount;
+
+    @ColumnInfo
     public String retweet;
-    public String like;
+
+    @ColumnInfo
     public String retweets;
+
+    @ColumnInfo
+    public String like;
+
+    @ColumnInfo
     public String likes;
+
+    @Ignore
     public List<String> mediaUrls;
+
+    @ColumnInfo
+    public long userId;
+
+    @Ignore
+    public User user;
+
 
     public Tweet(){ }
 
@@ -46,7 +88,9 @@ public class Tweet {
 
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
-        tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        User user = User.fromJson(jsonObject.getJSONObject("user"));
+        tweet.user = user;
+        tweet.userId = user.id;
         tweet.date = getDate(tweet.createdAt);
         tweet.timeStamp = calculateTimeStamp(tweet.date);
         tweet.time = getTime(tweet.date);
